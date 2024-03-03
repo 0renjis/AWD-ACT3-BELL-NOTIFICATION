@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    }
+    
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; 
+    position: relative;
+    }
+    
+    .button {
+    border: none;
+    outline: none;
+    background: #FAEF5D;
+    color: #FF004D;
+    font-size: 2rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 5px 5px 10px rgb(129, 88, 0);
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1;
+    transition: 0.01s;
+    position: relative;
+    top: 12rem;
+    
+    &.active {
+    transform: translate(3%, 3%);
+    box-shadow: 0px 0px 0px rgb(255, 165, 30);
+    }
+    }
+    
+    .notification {
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: transparent;
+    
+    &::after {
+    min-width: 60px;
+    min-height: 60px;
+    content: attr(data-count);
+    color: white;
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF004D;
+    border-radius: 50%;
+    position: absolute;
+    top: 8%;
+    right: 340%;
+    transform: translate(50%, -50%) scale(1);
+    transition: 0.3s;
+    opacity: 0;
+    }
+    
+    
+    &::before {
+    content: '\f0f3';
+    font-family: 'Font Awesome 5 Free';
+    display: block;
+    color: #FAEF5D;
+    font-size: 20rem;
+    margin-bottom: 3rem;
+    }
+    
+    &.count::after {
+    opacity: 1;
+    transform: scale(1);
+    }
+    
+    &.notify::before {
+    animation: belltiling 0.5s ease-in-out;
+    }
+    }
+    
+    @keyframes belltiling {
+    0% {
+    transform: rotate(-5deg);
+    }
+    25% {
+    transform: rotate(5deg);
+    }
+    50% {
+    transform: rotate(-10deg);
+    }
+    75% {
+    transform: rotate(5deg);
+    }
+    100% {
+    transform: rotate(0deg);
+    }
+    }
+    
+    .notification.shake {
+    animation: shake 0.2s ease-in-out;
+    }
+    
+    @keyframes shake {
+    0%, 100% {
+    transform: translateX(0);
+    }
+    25%, 75% {
+    transform: translateX(-5px);
+    }
+    50% {
+    transform: translateX(5px);
+    }
+    }
